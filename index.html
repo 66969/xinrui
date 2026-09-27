@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>给欣蕊小宝宝的生日信</title>
+<style>
+  :root{
+    --bg1:#fff9f7;
+    --bg2:#fcecef;
+    --bg3:#f7dde4;
+    --paper:#fffdf9;
+    --text:#5e4a50;
+    --muted:#9d828a;
+    --rose:#b76375;
+    --rose2:#d899a7;
+    --line:#efd9df;
+    --shadow:0 22px 60px rgba(107,66,80,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at 15% 12%, rgba(255,255,255,.95), transparent 30%),
+      radial-gradient(circle at 88% 18%, rgba(255,255,255,.55), transparent 22%),
+      linear-gradient(155deg,var(--bg1),var(--bg2) 55%,var(--bg3));
+    overflow:hidden;
+  }
+  .page{
+    position:relative;width:100%;height:100%;
+    display:flex;align-items:center;justify-content:center;padding:18px;
+  }
+  .stars span{
+    position:absolute;color:#d5a7b2;font-size:14px;opacity:.8;
+    animation:float 5s ease-in-out infinite;
+  }
+  .stars span:nth-child(1){left:8%;top:14%}
+  .stars span:nth-child(2){right:9%;top:18%;animation-delay:1s}
+  .stars span:nth-child(3){left:14%;bottom:18%;animation-delay:2s}
+  .stars span:nth-child(4){right:15%;bottom:16%;animation-delay:1.4s}
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(0)}
+    50%{transform:translateY(-9px) rotate(8deg)}
+  }
+
+  .phone{
+    width:min(410px,94vw);height:min(820px,92vh);
+    border-radius:34px;
+    background:rgba(255,255,255,.26);
+    border:1px solid rgba(255,255,255,.62);
+    box-shadow:0 18px 70px rgba(105,64,77,.15);
+    backdrop-filter:blur(8px);
+    position:relative;overflow:hidden;
+  }
+  .cover{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;
+    padding:26px 22px 22px;
+    transition:.6s ease;
+  }
+  .mini{
+    font-size:11px;letter-spacing:2.8px;color:var(--muted);margin-top:4px;
+  }
+  h1{
+    font-size:27px;margin:16px 0 6px;color:#70565e;letter-spacing:.5px;
+  }
+  .cover p{
+    font-size:14px;line-height:1.9;text-align:center;color:#856d74;margin:0;
+  }
+  .envelope-area{
+    flex:1;width:100%;display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .scene{width:320px;height:350px;position:relative}
+  .letter-preview{
+    position:absolute;left:50%;top:72px;transform:translateX(-50%) translateY(74px);
+    width:252px;height:218px;background:#fffdfb;border:1px solid #f0dce1;
+    border-radius:18px;box-shadow:0 12px 34px rgba(102,63,76,.13);
+    padding:18px;z-index:1;transition:.9s cubic-bezier(.2,.84,.18,1);overflow:hidden;
+  }
+  .letter-preview .tag{font-size:11px;letter-spacing:2px;color:#c08c98;margin-bottom:10px}
+  .letter-preview .big{font-size:21px;font-weight:700;color:#74575f;margin-bottom:8px}
+  .letter-preview .small{font-size:13px;line-height:1.8;color:#8e757d}
+  .envelope{
+    position:absolute;left:50%;top:123px;transform:translateX(-50%);
+    width:284px;height:182px;z-index:2;
+  }
+  .back{
+    position:absolute;inset:0;background:linear-gradient(#f8e7eb,#f1d4dc);
+    border-radius:0 0 18px 18px;box-shadow:var(--shadow);overflow:hidden;
+  }
+  .left,.right{
+    position:absolute;top:0;width:50%;height:100%;background:#f8e7eb;
+  }
+  .left{left:0;clip-path:polygon(0 0,100% 50%,0 100%)}
+  .right{right:0;clip-path:polygon(100% 0,0 50%,100% 100%)}
+  .front{
+    position:absolute;left:0;right:0;bottom:0;height:112px;
+    background:linear-gradient(#f7e1e6,#f0cfd7);
+    clip-path:polygon(0 0,50% 72%,100% 0,100% 100%,0 100%);
+    border-radius:0 0 18px 18px;
+  }
+  .flap{
+    position:absolute;left:0;right:0;top:0;height:102px;
+    background:linear-gradient(#f8e5e9,#f0ced7);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top center;transition:.9s cubic-bezier(.2,.84,.18,1);z-index:4;
+  }
+  .seal{
+    position:absolute;left:50%;top:75px;transform:translateX(-50%);
+    width:44px;height:44px;border-radius:50%;
+    display:grid;place-items:center;background:linear-gradient(135deg,#c77c8c,#a65266);
+    color:white;font-size:18px;box-shadow:0 10px 25px rgba(169,83,104,.25);
+    z-index:5;transition:.5s ease;
+  }
+  button{
+    border:0;border-radius:999px;padding:13px 23px;font-size:15px;cursor:pointer;
+    transition:.2s transform,.2s opacity;
+  }
+  button:active{transform:scale(.98)}
+  .primary{
+    color:white;background:linear-gradient(135deg,#c87d8e,#a65367);
+    box-shadow:0 10px 24px rgba(169,83,104,.24);min-width:175px;
+  }
+  .hint{font-size:11px;color:#ad9299;margin-top:10px;text-align:center}
+
+  .card-panel{
+    position:absolute;inset:14px;
+    background:rgba(255,253,250,.975);
+    border:1px solid rgba(244,225,230,.96);
+    border-radius:27px;
+    box-shadow:0 22px 60px rgba(103,63,77,.18);
+    opacity:0;pointer-events:none;
+    transform:translateY(28px) scale(.98);
+    transition:.55s cubic-bezier(.2,.84,.18,1);
+    overflow:auto;
+    padding:24px 20px 22px;
+    z-index:8;
+  }
+  .opened .flap{transform:rotateX(180deg)}
+  .opened .seal{opacity:0;transform:translateX(-50%) scale(.82)}
+  .opened .letter-preview{transform:translateX(-50%) translateY(-20px)}
+  .opened .card-panel{
+    opacity:1;pointer-events:auto;transform:none;
+    transition-delay:.55s;
+  }
+  .card-top{text-align:center;font-size:11px;letter-spacing:3px;color:#c28f9b}
+  .card-title{text-align:center;font-size:24px;font-weight:700;color:#6e555d;margin:10px 0 8px}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,#ecd7dd 15%,#ecd7dd 85%,transparent);margin:14px 0 18px}
+  .body{
+    font-size:15px;line-height:2.02;color:#655158;
+  }
+  .body p{margin:0 0 12px}
+  .highlight{
+    color:#895767;font-weight:600;
+  }
+  .ending{
+    margin-top:18px;padding-top:15px;border-top:1px dashed #ead4da;text-align:center;
+    font-size:16px;line-height:2;color:#765861;
+  }
+  .signature{
+    margin-top:18px;text-align:right;font-size:15px;color:#8b6871;
+  }
+  .close{
+    margin:18px auto 0;display:block;background:#f8eaee;color:#965b6c;padding:10px 18px;
+  }
+
+  .petal{
+    position:absolute;top:-26px;z-index:20;pointer-events:none;
+    animation:fall linear forwards;opacity:.9;
+  }
+  @keyframes fall{
+    to{transform:translate3d(var(--dx),110vh,0) rotate(360deg);opacity:.12}
+  }
+
+  @media(max-height:730px){
+    .phone{height:94vh}
+    .scene{height:310px}
+    .envelope{top:107px}
+    .letter-preview{top:58px}
+    .body{font-size:14px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="stars"><span>✦</span><span>♡</span><span>✿</span><span>✦</span></div>
+
+  <div class="phone" id="phone">
+    <div class="cover">
+      <div class="mini">A BIRTHDAY LETTER FOR MY GIRL</div>
+      <h1>给欣蕊小宝宝的一封生日信</h1>
+      <p>这是陪你度过的第一个生日，<br>想把这一份认真，留给你</p>
+
+      <div class="envelope-area">
+        <div class="scene">
+          <div class="letter-preview">
+            <div class="tag">TO 欣蕊小宝宝</div>
+            <div class="big">生日快乐，我的女孩 🎂</div>
+            <div class="small">很有幸陪你开启崭新的一岁，也很开心能参与你之后的岁岁年年</div>
+          </div>
+          <div class="envelope">
+            <div class="back"></div>
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="front"></div>
+            <div class="flap"></div>
+            <div class="seal">♡</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="primary" id="openBtn">拆开我的生日信 ✉️</button>
+      <div class="hint">这一封，只写给你</div>
+    </div>
+
+    <div class="card-panel" id="card">
+      <div class="card-top">HAPPY BIRTHDAY · MY GIRL</div>
+      <div class="card-title">亲爱的欣蕊小宝宝，生日快乐</div>
+      <div class="rule"></div>
+
+      <div class="body">
+        <p>很有幸陪你开启崭新的一岁</p>
+        <p>这是陪你度过的第一个生日，能参与你的新一岁，我特别开心</p>
+        <p>不用逼自己事事完美，愿你往后的日子，平安自在，想要的都慢慢奔赴而来</p>
+        <p>开心的时候，我陪你分享；觉得疲惫的时候，<span class="highlight">我永远是你的依靠</span></p>
+        <p>我不太擅长华丽的情话，但我会用行动好好陪着你，珍惜和你相伴的每一刻</p>
+        <p>很庆幸能够遇见你，谢谢你来到我的世界</p>
+        <p>往后岁岁年年，我都想在你身边</p>
+        <p class="highlight">很幸运，是你</p>
+
+        <div class="signature">爱你的正正</div>
+
+        <div class="ending">
+          何其有幸，与你相爱<br>
+          <strong>生日快乐，我的女孩</strong>
+        </div>
+      </div>
+
+      <button class="close" id="closeBtn">再看一眼信封 ♡</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const phone=document.getElementById('phone');
+const openBtn=document.getElementById('openBtn');
+const closeBtn=document.getElementById('closeBtn');
+
+function petals(n=24){
+  const chars=['🌸','♡','✦','🌷'];
+  for(let i=0;i<n;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    p.textContent=chars[Math.floor(Math.random()*chars.length)];
+    p.style.left=Math.random()*100+'vw';
+    p.style.setProperty('--dx',(Math.random()*180-90)+'px');
+    p.style.animationDuration=(4+Math.random()*3)+'s';
+    p.style.animationDelay=(Math.random()*1.1)+'s';
+    p.style.fontSize=(12+Math.random()*10)+'px';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),8000);
+  }
+}
+openBtn.onclick=()=>{
+  phone.classList.add('opened');
+  petals(26);
+};
+closeBtn.onclick=()=>{
+  phone.classList.remove('opened');
+};
+</script>
+</body>
+</html>
